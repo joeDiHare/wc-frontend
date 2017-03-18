@@ -82,7 +82,9 @@ class RedirectToEmailcheckView(View):
                 context = {
                     "object": obj,
                     "no_users":4,
-                    "user": ['io', 'mamt', 'e','tu'],
+                    "do_stages": [1,2,3,4],
+                    "no_users_iter": [1,2,3,4],
+                    "users": ['io', 'mamt', 'e','tu'],
                 }
             except:
                 template = "shortener/already-exists.html"

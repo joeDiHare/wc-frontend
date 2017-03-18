@@ -25,7 +25,7 @@
     <title>Whatsapp Analysis ~ Stefano Cosentino 2016</title>
 </head>
 <body>
-    <h1>WotChat 2.0</h1>
+    <h1>WotChat 2.1</h1>
 
     <h1>This conversations has {{ no_users }} users:</h1>
     <ul id="users">
@@ -34,114 +34,47 @@
     {% endfor %}
     </ul>
 
-    {# STAGE 1 #}
+    {# Q1 #}
     {% if 1 in do_stages%}
-    <h1>Who messaged the most?</h1>
-    <p>
-        <img src="WhoMessagedTheMost.png" alt="Who messaged the most" style="width:250px;height:250px;">
-    </p>
+    <h1>Who is the needy one?</h1>
     <h2>Yeee, but how quickly did you respond tho.</h2>
     <p>
-        {% for u in no_users %}
+        {% for u in no_users_iter %}
         <p>The median reaction time for {{users.u}} is {{UserRTmedian.u}} minutes</p>
         {% endfor %}
     </p>
     <h2>And, if you care about who started first the conversation...</h2>
     <p>
-        {% for u in no_users %}
+        {% for u in no_users_iter %}
         <p>{{users.u}} started a conversation {{FM_users.u}} % of the times.</p>
         {% endfor %}
     </p>
-    {% endif %}
-
-    {# STAGE 2 #}
-    {% if 2 in do_stages%}
-    <h1>Who sent more media files?</h1>
     <p>
-        {% for u in no_users %}
+        {% for u in no_users_iter %}
         <p>{{users.u}} sent {{MsgCountUsr.u}} messages and {{MediaCountUsr.u}} photos/videos.</p>
         {% endfor %}
     </p>
-    <p>
-    <img src="WhoSentMoreMedia.png" alt="Media Dsitribution" style="width:300px;height:250px;"> </p>
     {% endif %}
 
+    {# Q2 Cool one#}
+    {% if 2 in do_stages%}
+    <h1>Who is the smart one?</h1>
+    {% endif %}
 
-    {# STAGE 3 [Wordles] #}
+    {# Q3 Who is the smart one [Wordles] #}
     {% if 3 in do_stages%}
-    <h1>Distribution of words</h1>
-    {% for u in no_users %}
-    <p>{{users.u}}:
-    <img src="{{users.u}}_wordle.png" alt="wordle for {{users.u}}" style="width:500px;height:500px;">
-    </p>
-    {% endfor %}
+    <h1>Who is the smart one?</h1>
     {% endif %}
 
-    {# STAGE 4 #}
+
+    {# Q4 [Who is the funny one] #}
     {% if 4 in do_stages%}
-    <h1>JINX</h1>
-    <p>
-        {% for u in no_users %}
-        <p>
-            {{users.u}} jinxed first {{jinxNo.u}} times
-        </p>
-        {% endfor %}
-    </p>
-    {% endif %}
-
-    {# STAGE 5 #}
-    {% if 5 in do_stages%}
-    <h1>The big L</h1>
-    <p>
-        {% for u in no_users %}
-        <p>
-            {{users.u}} used the word 'love' {{noLove.u}} times, and said 'I love you' {{noIloveU.u}} times, but also 'I hate you' {{noHateU.u}} times.
-        </p>
-        {% endfor %}
-    </p>
-    <h1>Messaging Trend</h1>
-    <p>
-        <img src="sender_per_month.png" alt="Which month" style="width:500px;height:300px;">
-    </p>
-    {% endif %}
-
-    {# STAGE 5b #}
-    {% if 5 in do_stages%}
-    <h1>Who is more into the other person?</h1>
-    <h3>Based on a million year research based on the use of stretched words has concluded that</h3>
-
-	<p>And to be precise:</p>
-    <p>
-        {% for u in no_users %}
-        <p> {{users.u}} stretched words {{CountStretchedWrdsRatio.u}} % of the times with things like:</p>
-        <p> " {{StretchedWordsUsr.u}} ".</p>
-        {% endfor %}
-    </p>
-    {% endif %}
-
-
-    {# STAGE 5c #}
-    {% if 5 in do_stages %}
-    {% if good_night.0 > 0 %}
-    <h3>{% for u in no_users %}
-        <p> {{users.u}} said 'good night' {{good_night.u}} times.</p>
-        {% endfor %}
-    </h3>
-    {% endif %}
-    {% endif %}
-
-
-    {# STAGE 10 [Who is the funny one] #}
-    {% if 10 in do_stages%}
     <h1>Who is the funny one?</h1>
     <p>
     <h2>{{JokeCrakers_best.0}}</h2>
     </p>
     <p>
     {{JokeCrakers_best.0}} made {{JokeCrakers_best.1}} jokes
-    </p>
-    <p>
-    <img src="WhoMadeMoreJokes.png" alt="Who is the funny one" style="width:500px;height:200px;">
     </p>
     {% endif %}
 
