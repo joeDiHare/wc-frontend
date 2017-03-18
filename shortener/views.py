@@ -7,6 +7,8 @@ from analytics.models import ClickEvent
 from .forms import SubmitUrlForm, CheckPswForm
 from .models import KirrURL
 
+import json
+
 # Create your views here.
 class HomeView(View):
     def get(self, request, *args, **kwargs):
@@ -77,14 +79,10 @@ class RedirectToEmailcheckView(View):
             new_email = form.cleaned_data.get("email")
             try:
                 obj = KirrURL.objects.get(email=new_email, shortcode=shortcode)
-                # obj.info
+                data = json.loads(obj.info)
                 template = "shortener/results.html"
                 context = {
-                    "object": obj,
-                    "no_users":4,
-                    "do_stages": [1,2,3,4],
-                    "no_users_iter": [1,2,3,4],
-                    "users": ['io', 'mamt', 'e','tu'],
+                    "r": data,
                 }
             except:
                 template = "shortener/already-exists.html"

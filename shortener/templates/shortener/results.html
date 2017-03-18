@@ -1,82 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
-    <style type="text/css">
-    #share-buttons img {
-        width: 32px;
-        padding: 5px;
-        border: 0;
-        box-shadow: 0;
-        display: inline;
-    }
-    body    {
-        padding-left: 5px;
-        padding-right: 5px;
-        color: black;
-        max-width: 450px;
-        text-align: center;
-    }
-    ul {
-        margin: 10;
-        padding-left: 10;
-    }
-    </style>
-    <title>Whatsapp Analysis ~ Stefano Cosentino 2016</title>
-</head>
-<body>
-    <h1>WotChat 2.1</h1>
 
-    <h1>This conversations has {{ no_users }} users:</h1>
+{% extends 'base.html' %}
+
+{% block styles %}
+<style>
+body {
+      background-color: #226268;
+      /*{% if bg_image %}background-image: url({{ bg_image }});{% endif %}*/
+      background-size: cover;
+
+    }
+
+.btn-link {
+      color: #50dfec;
+      text-shadow: none;
+    }
+    .btn-link:hover {
+      color: #000000;
+    }
+</style>
+{% endblock styles %}
+
+
+{% block content %}
+    <h1>WotChat 3.0</h1>{% csrf_token %}
+    
+    <p> Stefano Cosentino </p>
+    <h3>This conversations has {{ r.no_users }} users:</h3>
     <ul id="users">
-    {% for user in users %}
-        <li>{{user}}</li>
+    {% for user in r.users %}
+        <li style="list-style-type: none">{{user}}</li>
     {% endfor %}
     </ul>
 
-    {# Q1 #}
-    {% if 1 in do_stages%}
-    <h1>Who is the needy one?</h1>
-    <h2>Yeee, but how quickly did you respond tho.</h2>
+    {# Q1 [Who is the funny one] #}
+    {% if 1 in r.do_stages%}
+    <h1>Who is the funny one?</h1>
     <p>
-        {% for u in no_users_iter %}
-        <p>The median reaction time for {{users.u}} is {{UserRTmedian.u}} minutes</p>
-        {% endfor %}
-    </p>
-    <h2>And, if you care about who started first the conversation...</h2>
-    <p>
-        {% for u in no_users_iter %}
-        <p>{{users.u}} started a conversation {{FM_users.u}} % of the times.</p>
-        {% endfor %}
+    <h2>{{r.JokeCrakers_best.0}}</h2>
     </p>
     <p>
-        {% for u in no_users_iter %}
-        <p>{{users.u}} sent {{MsgCountUsr.u}} messages and {{MediaCountUsr.u}} photos/videos.</p>
-        {% endfor %}
+    {{r.JokeCrakers_best.0}} made {{r.JokeCrakers_best.1}} jokes.
     </p>
     {% endif %}
 
+
     {# Q2 Cool one#}
-    {% if 2 in do_stages%}
-    <h1>Who is the smart one?</h1>
+    {% if 2 in r.do_stages%}
+    <h1>Who is the cool one?</h1>
     {% endif %}
 
     {# Q3 Who is the smart one [Wordles] #}
-    {% if 3 in do_stages%}
+    {% if 3 in r.do_stages%}
     <h1>Who is the smart one?</h1>
     {% endif %}
 
 
-    {# Q4 [Who is the funny one] #}
-    {% if 4 in do_stages%}
-    <h1>Who is the funny one?</h1>
+    {# Q4 #}
+    {% if 4 in r.do_stages%}
+    <h1>Who is the needy one?</h1>
     <p>
-    <h2>{{JokeCrakers_best.0}}</h2>
+        {% for u in r.no_users_iter %}
+        {% if u is 1 %}<p>The median reaction time for {{r.users.0}} is {{r.UserRTmedian.0}} minutes</p>{% endif %}
+        {% if u is 2 %}<p>The median reaction time for {{r.users.1}} is {{r.UserRTmedian.1}} minutes</p>{% endif %}
+        {% if u is 3 %}<p>The median reaction time for {{r.users.2}} is {{r.UserRTmedian.2}} minutes</p>{% endif %}
+        {% if u is 4 %}<p>The median reaction time for {{r.users.3}} is {{r.UserRTmedian.3}} minutes</p>{% endif %}
+        {% if u is 5 %}<p>The median reaction time for {{r.users.4}} is {{r.UserRTmedian.4}} minutes</p>{% endif %}
+        {% endfor %}
+    </p>
+    <h3> Who started it: </h3>
+    <p>
+        {% for u in r.no_users_iter %}
+        {% if u is 1 %}<p>{{r.users.0}} started a conversation {{r.FM_users.0}} % of the times.</p>{% endif %}
+        {% if u is 2 %}<p>{{r.users.1}} started a conversation {{r.FM_users.1}} % of the times.</p>{% endif %}
+        {% if u is 3 %}<p>{{r.users.2}} started a conversation {{r.FM_users.2}} % of the times.</p>{% endif %}
+        {% if u is 4 %}<p>{{r.users.3}} started a conversation {{r.FM_users.3}} % of the times.</p>{% endif %}
+        {% if u is 5 %}<p>{{r.users.4}} started a conversation {{r.FM_users.4}} % of the times.</p>{% endif %}
+        {% endfor %}
     </p>
     <p>
-    {{JokeCrakers_best.0}} made {{JokeCrakers_best.1}} jokes
+        {% for u in r.no_users_iter %}
+        {% if u is 1 %}<p>{{r.users.0}} sent {{r.MsgCountUsr.0}} messages and {{r.MediaCountUsr.0}} photos/videos.</p>{% endif %}
+        {% if u is 2 %}<p>{{r.users.1}} sent {{r.MsgCountUsr.1}} messages and {{r.MediaCountUsr.1}} photos/videos.</p>{% endif %}
+        {% if u is 3 %}<p>{{r.users.2}} sent {{r.MsgCountUsr.2}} messages and {{r.MediaCountUsr.2}} photos/videos.</p>{% endif %}
+        {% if u is 4 %}<p>{{r.users.3}} sent {{r.MsgCountUsr.3}} messages and {{r.MediaCountUsr.3}} photos/videos.</p>{% endif %}
+        {% if u is 5 %}<p>{{r.users.4}} sent {{r.MsgCountUsr.4}} messages and {{r.MediaCountUsr.4}} photos/videos.</p>{% endif %}
+        {% endfor %}
     </p>
     {% endif %}
+
 
     <div id="share-buttons"; style='float:center; width: 100%'>
         <!-- Twitter -->
@@ -98,6 +109,5 @@
 
     </div>
 
+{% endblock content %}
 
-</body>
-</html>

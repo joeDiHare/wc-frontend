@@ -1,0 +1,22 @@
+{	"no_users": 5,
+	"no_users_iter":[1,2,3,4,5],
+ 	"users": ["Enrico greco chef", 	"Low", "alberto ascione", "stefano cosentino", "Antonio Guerrazzi"],
+  	"do_stages": [1, 2, 3, 4],
+ 	"TotLaughs": 410,
+ 	"UserRTmedian": [8.0, 9.0, 23.0, 8.5, 14.5],
+ 	"CountStretchedWrdsRatio": [0.0, 0.01, 0.0, 0.0, 0.01],
+	"FM_users": [34, 12, 6, 17, 31],
+	"JokeCrakers": [138, 100, 43, 85, 44],
+	"JokeCrakers_best": ["Enrico greco chef", 138],
+	"JokePerMsgPerc": 17.8,
+	"MediaCountUsr": [51, 81, 40, 43, 29],
+	"MsgCountUsr": [681, 422, 185, 388, 629]
+	}
+
+
+
+
+
+
+
+{"no_users": 5, "no_users_iter":[1,2,3,4,5], "users": ["Enrico greco chef", "Low", "alberto ascione", "stefano cosentino", "Antonio Guerrazzi"], "do_stages": [1, 2, 3, 4], "TotLaughs": 410, "UserRTmedian": [8.0, 9.0, 23.0, 8.5, 14.5], "CountStretchedWrdsRatio": [0.0, 0.01, 0.0, 0.0, 0.01], "FM_users": [34, 12, 6, 17, 31], "JokeCrakers": [138, 100, 43, 85, 44], "JokeCrakers_best": ["Enrico greco chef", 138], "JokePerMsgPerc": 17.8, "MediaCountUsr": [51, 81, 40, 43, 29], "MsgCountUsr": [681, 422, 185, 388, 629]}
